@@ -37,3 +37,7 @@ In general, we aim for a more modular approach, where it'd be simpler to either 
 
 - Make gossip dead-simple and independent of any signalling that browsers may need.
 - Support WebRTC for browser-to-browser sync, but on-par with any other transports (following the _better modularization_ objective stated above).
+
+### Usage modes
+
+- Support both explicit synchronization by using the sync library (like in v2), but also provide adapters to perform sync by doing **automatic diffing** (could work for files and for databases). In this mode, for example, an application could use a local database, and just configure a sync process to do sync. Some caveats may apply: IDs in the db should be random (e.g. UUIDs), a column could be added to the syncrhonized tables to indicate the replication state of each column, to be written by the sync process and read by the app, etc.
